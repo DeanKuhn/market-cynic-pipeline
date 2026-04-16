@@ -1,0 +1,37 @@
+name: Market Cynic Daily Run
+
+on:
+  schedule:
+    # This is Cron syntax: 9 AM and 9 PM UTC
+    - cron: '0 9,21 * * *'
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        python -m playwright install chromium --with-deps
+
+    - name: Run Pipeline
+      run: python -m main
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "MarketCynicBot"
+        git config --global user.email "bot@marketcynic.com"
+        git add data/market_history.parquet logs/
+        git commit -m "Automated data update: $(date)" || echo "No changes to commit"
+        git push

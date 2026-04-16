@@ -6,6 +6,9 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer # type:ignore
 
 nltk.download("vader_lexicon", quiet=True)
 
+from src.utils.logger import setup_logger
+logger = setup_logger("RedditSentinel")
+
 def get_reddit_data(symbol_list):
     # Define user agent; Reddit requires one so they know it's not a bot
     headers = {"User-Agent": "MargetCynicPipeline/0.1 by DeanKuhn"}
@@ -15,7 +18,7 @@ def get_reddit_data(symbol_list):
     # Target the "hot" posts of these subreddits
     url = "https://www.reddit.com/r/stocks/hot.json?limit=100"
     stats = {symbol: {"count": 0, "sentiment": 0.0} for symbol in symbol_list}
-    print(f"Bypassing API... Scanning Reddit JSON for {symbol_list}...")
+    logger.info(f"Bypassing API... Scanning Reddit JSON for {symbol_list}...")
 
     try:
         response = requests.get(url, headers=headers)
@@ -42,9 +45,9 @@ def get_reddit_data(symbol_list):
 
         return stats
     except Exception as e:
-        print(f"Reddit Bypass Failed: {e}")
+        logger.error(f"Reddit Bypass Failed: {e}", exc_info=True)
         return stats
 
 if __name__ == "__main__":
     test_symbols = ["NVDA", "IONQ", "QBTS", "TSLA", "HIMS"]
-    print(get_reddit_data(test_symbols))
+    logger.info(get_reddit_data(test_symbols))

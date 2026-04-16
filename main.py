@@ -2,50 +2,52 @@ import json
 import os
 import asyncio
 import sys
+from src.utils.logger import setup_logger
 from src.ingestion.yahoo_probe import run_probe
 from src.transformation.cleaner import clean_raw_data
 from src.transformation.aggregator import aggregate_market_data
+
+logger = setup_logger("MainPipeline")
 
 # Define paths
 RAW_DATA_PATH = "data/raw_stocks.json"
 CLEAN_DATA_PATH = "data/cleansed_stocks.parquet"
 
 async def run_pipeline():
-    print("--- Starting Market Cynic Pipeline ---")
+    logger.info("--- Starting Market Cynic Pipeline ---")
 
     # Task 1: Ingestion (Bronze)
-    print("[1/3] Ingesting data from Yahoo Finance...")
+    logger.info("[1/3] Ingesting data from Yahoo Finance...")
     try:
-        # Await the scraper we built earlier
         await run_probe(RAW_DATA_PATH)
-
-        # Gatekeeper check
+        # Gatekeeper check in case probe returned no data
         if not is_file_valid(RAW_DATA_PATH):
-            print("CRITICAL FALIURE: Ingestion returned no data. Terminating.")
+            logger.error("CRITICAL FALIURE: Ingestion returned no data. Terminating.",
+                         exc_info=True)
             sys.exit(1)
 
     except Exception as e:
-        print(f"CRITIAL FALIURE during Ingestion: {e}")
+        logger.error(f"CRITIAL FALIURE during Ingestion: {e}", exc_info=True)
         sys.exit(1)
 
     # Task 2: Transformation (Silver)
-    print("[2/3] Cleaning and validating data...")
+    logger.info("[2/3] Cleaning and validating data...")
     try:
         # Synchronous, no need for await
         clean_raw_data(RAW_DATA_PATH, CLEAN_DATA_PATH)
     except Exception as e:
-        print(f"CRITICAL FALIURE during Transformation: {e}")
+        logger.error(f"CRITICAL FALIURE during Transformation: {e}", exc_info=True)
         sys.exit(1)
 
     # Task 3: Aggregate with Sentiment (Gold)
-    print("[3/3] Aggregating data with sentiment...")
+    logger.info("[3/3] Aggregating data with sentiment...")
     try:
         aggregate_market_data()
     except Exception as e:
-        print(f"CRITICAL FALIURE during aggregagtion: {e}")
+        logger.error(f"CRITICAL FALIURE during aggregagtion: {e}", exc_info=True)
         sys.exit(1)
 
-    print("--- Pipeline Completed Successfully ---")
+    logger.info("--- Pipeline Completed Successfully ---")
 
 def is_file_valid(filepath: str) -> bool:
     # Check if file exists and has a greater size than 0

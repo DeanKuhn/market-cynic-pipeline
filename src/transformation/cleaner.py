@@ -4,6 +4,9 @@ from datetime import datetime
 from src.utils.schemas import StockSchema
 from pydantic import ValidationError
 
+from src.utils.logger import setup_logger
+logger = setup_logger("RawDataCleaner")
+
 def clean_raw_data(input_file: str, output_file: str):
     with open(input_file, "r") as f:
         raw_data = json.load(f)
@@ -18,11 +21,12 @@ def clean_raw_data(input_file: str, output_file: str):
             stock = StockSchema(**entry)
             valid_stocks.append(stock.model_dump())
         except ValidationError as e:
-            print(f"Dropping record {entry.get("symbol")}: {e}")
+            logger.error(f"Dropping record {entry.get("symbol")}: {e}"
+                         , exc_info=True)
             errors += 1
 
     df = pd.DataFrame(valid_stocks)
-    print(f"Cleaning complete. Valid: {len(df)}, Dropped: {errors}")
+    logger.info(f"Cleaning complete. Valid: {len(df)}, Dropped: {errors}")
     df.to_parquet(output_file)
     return df
 

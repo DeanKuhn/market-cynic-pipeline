@@ -1,6 +1,9 @@
 import asyncio
 from playwright.async_api import async_playwright # type:ignore
 
+from src.utils.logger import setup_logger
+logger = setup_logger("YahooScraper")
+
 async def run_probe(output_file: str):
     async with async_playwright() as p:
         # launch the browser in 'headless' mode
@@ -13,13 +16,13 @@ async def run_probe(output_file: str):
 
         page = await context.new_page()
         url = "https://finance.yahoo.com/markets/stocks/most-active/"
-        print(f"Attempting to reach: {url}")
+        logger.info(f"Attempting to reach: {url}")
         try:
             # navigate and wait for the network to be 'idle' (JS fully loaded)
             await page.goto(url, wait_until="domcontentloaded", timeout=60000)
 
             # wait for the table we are looking for to exist
-            print("Waiting for data table to load...")
+            logger.info("Waiting for data table to load...")
             await page.wait_for_selector("table", timeout=15000)
 
             rows = await page.query_selector_all("tbody tr")
@@ -39,9 +42,9 @@ async def run_probe(output_file: str):
                         "price": price.strip()
                     })
 
-            # print results
+            # log results
             for stock in stock_data:
-                print(f"Captured: {stock['symbol']} - {stock['price']}")
+                logger.info(f"Captured: {stock['symbol']} - {stock['price']}")
 
             import json
             with open(output_file, "w") as f:
@@ -49,7 +52,7 @@ async def run_probe(output_file: str):
 
         except Exception as e:
             await page.screenshot(path="error_state.png")
-            print(f"Navigation failed: {e}")
+            logger.error(f"Navigation failed: {e}", exc_info=True)
 
         finally:
             await browser.close()

@@ -28,3 +28,6 @@ The System (main.py) to run it all.
 "I utilized the Reddit API for sentiment analysis, ensuring full compliance with their Responsible Builder Policy by using the 'script' authentication flow for local development and respecting their 60-request-per-minute rate limits to maintain system integrity."
 
 "I initially attempted to use the official Reddit API, but found their 2026 approval process to be a significant bottleneck for agile development. I pivoted to a custom ingestion script using public JSON endpoints and a custom User-Agent, allowing the pipeline to remain functional without external administrative dependencies."
+
+The "Cynical" Take on Logging vs Printing
+If you use print(), your data is ephemeral—once the terminal scrollback is gone, the evidence is gone. If a recruiter asks, "How do you handle production failures?" and you point to a logs/ directory with structured formatting, you've proven you think like an engineer, not just a coder.
