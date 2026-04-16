@@ -1,4 +1,35 @@
+# --- Environment & Dependencies ---
 venv/
-__pycache__/
+.venv/
+env/
+bin/
+lib/
+# Keep your API keys and secrets out of GitHub
 .env
+
+# --- Python Artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Data & Large Files ---
+# Ignore the entire data directory (Bronze/Silver/Gold)
+data/
+# Ignore any loose local data files
 *.json
+*.csv
+*.parquet
+*.sqlite
+
+# --- IDE & OS Garbage ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Project Specifics ---
+# If you use Playwright's trace or video features:
+test-results/
+playwright-report/

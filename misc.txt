@@ -1,0 +1,26 @@
+"APIs are often paywalled, rate-limited, or deprecated. By building a headless browser pipeline with Playwright, I created a system that can extract data from the same interface a human uses, handling dynamic JavaScript 'hydration' that standard tools like BeautifulSoup simply can't see."
+
+"I structured the project as a Python package to ensure clear separation of concerns between ingestion and transformation. I managed module resolution by executing the pipeline via the module flag to maintain absolute import paths."
+
+The Architecture Check-In
+Look at what you’ve built so far. You have:
+
+A Headless Ingestion Probe (Playwright) that bypasses JS-heavy anti-bot measures.
+
+A Data Contract (Pydantic) that enforces strict types and cleans hostile strings into floats.
+
+A Storage Strategy (Parquet) that uses industry-standard columnar compression.
+
+The Dialectical Challenge: The "Orchestration" Gap
+Right now, your pipeline is a series of manual steps. You run the scraper, then you manually run the cleaner.
+
+A cynical senior engineer would ask: "If I want this to run every morning at 9:00 AM while I'm sleeping, do I have to wake up and push the buttons? And if the scraper fails, does the cleaner still try to run on old data?"
+
+Where does this leave us?
+You now have:
+
+The Sandbox (explore.ipynb) to look at your data.
+
+The Refinery (src/) to process the data.
+
+The System (main.py) to run it all.
