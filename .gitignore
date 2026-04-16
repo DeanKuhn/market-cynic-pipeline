@@ -14,16 +14,9 @@ __pycache__/
 .ipynb_checkpoints/
 
 # --- Data & Persistence Strategy ---
-# 1. Ignore the directory contents by default
 data/*
-
-# 2. Force Git to track the directory structure even if empty
 !.gitkeep
-
-# 3. ALLOW the specific database file to be committed
 !data/market_history.parquet
-
-# 4. Ignore all other data artifacts
 data/*.json
 data/*.csv
 data/*.sqlite
@@ -35,7 +28,8 @@ data/*.sqlite
 Thumbs.db
 
 # --- Project Specifics ---
-logs/
+logs/*
+!.gitkeep
 test-results/
 playwright-report/
 misc.txt

@@ -2,20 +2,22 @@ name: Market Cynic Daily Run
 
 on:
   schedule:
-    # This is Cron syntax: 9 AM and 9 PM UTC
     - cron: '0 9,21 * * *'
-  workflow_dispatch: # Allows you to run it manually for testing
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Added permissions to allow the bot to push code back to the repo
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.12'
 
@@ -28,10 +30,19 @@ jobs:
     - name: Run Pipeline
       run: python -m main
 
+    - name: Upload Logs as Artifact
+      if: always() # CRITICAL: This ensures logs upload even if the script crashes
+      uses: actions/upload-artifact@v4
+      with:
+        name: pipeline-logs-${{ github.run_id }}
+        path: logs/
+        retention-days: 7
+
     - name: Commit and Push changes
       run: |
         git config --global user.name "MarketCynicBot"
         git config --global user.email "bot@marketcynic.com"
-        git add data/market_history.parquet logs/
+        # Only add the data file. Logs are handled by the Artifact step above.
+        git add data/market_history.parquet
         git commit -m "Automated data update: $(date)" || echo "No changes to commit"
         git push
