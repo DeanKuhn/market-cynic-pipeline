@@ -31,3 +31,11 @@ The System (main.py) to run it all.
 
 The "Cynical" Take on Logging vs Printing
 If you use print(), your data is ephemeral—once the terminal scrollback is gone, the evidence is gone. If a recruiter asks, "How do you handle production failures?" and you point to a logs/ directory with structured formatting, you've proven you think like an engineer, not just a coder.
+
+But for a portfolio project, using Git as your "Database" is a clever, free hack. It shows you understand:
+
+File I/O: How Python interacts with the OS.
+
+Git Automation: How to use bots to manage project state.
+
+Data Persistence: Ensuring data survives after the "server" disappears.
