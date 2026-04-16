@@ -33,3 +33,4 @@ Thumbs.db
 # If you use Playwright's trace or video features:
 test-results/
 playwright-report/
+misc.txt

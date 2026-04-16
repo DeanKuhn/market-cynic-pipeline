@@ -4,6 +4,7 @@ import asyncio
 import sys
 from src.ingestion.yahoo_probe import run_probe
 from src.transformation.cleaner import clean_raw_data
+from src.transformation.aggregator import aggregate_market_data
 
 # Define paths
 RAW_DATA_PATH = "data/raw_stocks.json"
@@ -12,8 +13,8 @@ CLEAN_DATA_PATH = "data/cleansed_stocks.parquet"
 async def run_pipeline():
     print("--- Starting Market Cynic Pipeline ---")
 
-    # Task 1: Ingestion
-    print("[1/2] Ingesting data from Yahoo Finance...")
+    # Task 1: Ingestion (Bronze)
+    print("[1/3] Ingesting data from Yahoo Finance...")
     try:
         # Await the scraper we built earlier
         await run_probe(RAW_DATA_PATH)
@@ -27,13 +28,21 @@ async def run_pipeline():
         print(f"CRITIAL FALIURE during Ingestion: {e}")
         sys.exit(1)
 
-    # Task 2: Transformation
-    print("[2/2] Cleaning and validating data...")
+    # Task 2: Transformation (Silver)
+    print("[2/3] Cleaning and validating data...")
     try:
         # Synchronous, no need for await
         clean_raw_data(RAW_DATA_PATH, CLEAN_DATA_PATH)
     except Exception as e:
         print(f"CRITICAL FALIURE during Transformation: {e}")
+        sys.exit(1)
+
+    # Task 3: Aggregate with Sentiment (Gold)
+    print("[3/3] Aggregating data with sentiment...")
+    try:
+        aggregate_market_data()
+    except Exception as e:
+        print(f"CRITICAL FALIURE during aggregagtion: {e}")
         sys.exit(1)
 
     print("--- Pipeline Completed Successfully ---")
