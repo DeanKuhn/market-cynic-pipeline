@@ -33,10 +33,12 @@ async def run_pipeline():
     # Task 2: Transformation (Silver)
     logger.info("[2/3] Cleaning and validating data...")
     try:
-        # Synchronous, no need for await
         clean_raw_data(RAW_DATA_PATH, CLEAN_DATA_PATH)
+        if not os.path.exists(CLEAN_DATA_PATH) or os.path.getsize(CLEAN_DATA_PATH) == 0:
+            logger.error("TRANSFORMATION FAILED: Silver layer is empty. Terminating.")
+            sys.exit(1)
     except Exception as e:
-        logger.error(f"CRITICAL FALIURE during Transformation: {e}", exc_info=True)
+        logger.error(f"CRITICAL FAILURE during Transformation: {e}", exc_info=True)
         sys.exit(1)
 
     # Task 3: Aggregate with Sentiment (Gold)

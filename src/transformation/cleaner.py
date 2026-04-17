@@ -15,8 +15,7 @@ def clean_raw_data(input_file: str, output_file: str):
     errors = 0
 
     for entry in raw_data:
-        # add "ingested_at" metadata before validating
-        entry["ingested_at"] = datetime.now().isoformat()
+        # --- Key Mapping ---
         try:
             stock = StockSchema(**entry)
             valid_stocks.append(stock.model_dump())
@@ -25,9 +24,15 @@ def clean_raw_data(input_file: str, output_file: str):
                          , exc_info=True)
             errors += 1
 
-    df = pd.DataFrame(valid_stocks)
+    if not valid_stocks:
+        logger.error("CRITIAL ERROR: No valid stocks survived cleaning. "
+                     "Check raw JSON keys.")
+        df = pd.DataFrame(columns=["symbol", "price", "name"])
+    else:
+        df = pd.DataFrame(valid_stocks)
+
     logger.info(f"Cleaning complete. Valid: {len(df)}, Dropped: {errors}")
-    df.to_parquet(output_file)
+    df.to_parquet(output_file, index=False)
     return df
 
 if __name__ == "__main__":

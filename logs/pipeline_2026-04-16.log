@@ -20,3 +20,755 @@
 2026-04-16 11:10:12,379 - MarketDataAggregator - INFO - Appending to history.  Total records: 30
 2026-04-16 11:10:12,382 - MarketDataAggregator - INFO - History Updated: data/market_history.parquet
 2026-04-16 11:10:12,382 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:14:22,865 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:14:22,880 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:14:23,678 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:14:29,167 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:14:33,896 - YahooScraper - INFO - Captured: NVDA - 198.18
+2026-04-16 14:14:33,897 - YahooScraper - INFO - Captured: INTC - 68.22
+2026-04-16 14:14:33,897 - YahooScraper - INFO - Captured: QBTS - 21.91
+2026-04-16 14:14:33,897 - YahooScraper - INFO - Captured: IONQ - 44.88
+2026-04-16 14:14:33,897 - YahooScraper - INFO - Captured: HIMS - 27.17
+2026-04-16 14:14:33,897 - YahooScraper - INFO - Captured: SNAP - 6.09
+2026-04-16 14:14:33,898 - YahooScraper - INFO - Captured: SOFI - 19.11
+2026-04-16 14:14:33,898 - YahooScraper - INFO - Captured: SMR - 11.41
+2026-04-16 14:14:33,898 - YahooScraper - INFO - Captured: GRAB - 4.03
+2026-04-16 14:14:33,898 - YahooScraper - INFO - Captured: TSLA - 387.73
+2026-04-16 14:14:34,038 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:14:34,048 - RawDataCleaner - ERROR - Dropping record NVDA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...-04-16T14:14:34.039174'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...-04-16T14:14:34.039174'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,050 - RawDataCleaner - ERROR - Dropping record INTC: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...-04-16T14:14:34.050295'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...-04-16T14:14:34.050295'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,051 - RawDataCleaner - ERROR - Dropping record QBTS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...-04-16T14:14:34.051012'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...-04-16T14:14:34.051012'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,051 - RawDataCleaner - ERROR - Dropping record IONQ: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...-04-16T14:14:34.051672'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...-04-16T14:14:34.051672'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,052 - RawDataCleaner - ERROR - Dropping record HIMS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...-04-16T14:14:34.052225'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...-04-16T14:14:34.052225'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,052 - RawDataCleaner - ERROR - Dropping record SNAP: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'...-04-16T14:14:34.052897'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'...-04-16T14:14:34.052897'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,053 - RawDataCleaner - ERROR - Dropping record SOFI: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...-04-16T14:14:34.053767'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...-04-16T14:14:34.053767'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,054 - RawDataCleaner - ERROR - Dropping record SMR: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...-04-16T14:14:34.054666'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...-04-16T14:14:34.054666'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,055 - RawDataCleaner - ERROR - Dropping record GRAB: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...-04-16T14:14:34.055357'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...-04-16T14:14:34.055357'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,056 - RawDataCleaner - ERROR - Dropping record TSLA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...-04-16T14:14:34.056162'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 21, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...-04-16T14:14:34.056162'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:14:34,057 - RawDataCleaner - INFO - Cleaning complete. Valid: 0, Dropped: 10
+2026-04-16 14:14:34,081 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:14:34,082 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:14:34,112 - MainPipeline - ERROR - CRITICAL FALIURE during aggregagtion: 'symbol'
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index_class_helper.pxi", line 70, in pandas._libs.index.Int64Engine._check_type
+KeyError: 'symbol'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\main.py", line 47, in run_pipeline
+    aggregate_market_data()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\aggregator.py", line 20, in aggregate_market_data
+    tickers = df_silver["symbol"].tolist()
+              ~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'symbol'
+2026-04-16 14:22:07,040 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:22:07,040 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:22:07,783 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:22:10,632 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:22:14,646 - YahooScraper - INFO - Captured: NVDA - 198.30
+2026-04-16 14:22:14,646 - YahooScraper - INFO - Captured: INTC - 68.26
+2026-04-16 14:22:14,647 - YahooScraper - INFO - Captured: QBTS - 21.81
+2026-04-16 14:22:14,647 - YahooScraper - INFO - Captured: IONQ - 44.71
+2026-04-16 14:22:14,647 - YahooScraper - INFO - Captured: HIMS - 27.30
+2026-04-16 14:22:14,648 - YahooScraper - INFO - Captured: SNAP - 6.09
+2026-04-16 14:22:14,648 - YahooScraper - INFO - Captured: SOFI - 19.10
+2026-04-16 14:22:14,648 - YahooScraper - INFO - Captured: SMR - 11.44
+2026-04-16 14:22:14,648 - YahooScraper - INFO - Captured: GRAB - 4.02
+2026-04-16 14:22:14,648 - YahooScraper - INFO - Captured: TSLA - 387.82
+2026-04-16 14:22:14,854 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:22:14,855 - RawDataCleaner - ERROR - Dropping record NVDA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...ion', 'price': '198.30'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...ion', 'price': '198.30'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,856 - RawDataCleaner - ERROR - Dropping record INTC: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...tion', 'price': '68.26'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...tion', 'price': '68.26'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,857 - RawDataCleaner - ERROR - Dropping record QBTS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...Inc.', 'price': '21.81'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...Inc.', 'price': '21.81'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,857 - RawDataCleaner - ERROR - Dropping record IONQ: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...Inc.', 'price': '44.71'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...Inc.', 'price': '44.71'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,858 - RawDataCleaner - ERROR - Dropping record HIMS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...Inc.', 'price': '27.30'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...Inc.', 'price': '27.30'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,858 - RawDataCleaner - ERROR - Dropping record SNAP: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'... Inc.', 'price': '6.09'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'... Inc.', 'price': '6.09'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,859 - RawDataCleaner - ERROR - Dropping record SOFI: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...Inc.', 'price': '19.10'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...Inc.', 'price': '19.10'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,859 - RawDataCleaner - ERROR - Dropping record SMR: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...tion', 'price': '11.44'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...tion', 'price': '11.44'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,860 - RawDataCleaner - ERROR - Dropping record GRAB: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...mited', 'price': '4.02'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...mited', 'price': '4.02'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,860 - RawDataCleaner - ERROR - Dropping record TSLA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...nc.', 'price': '387.82'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...nc.', 'price': '387.82'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:22:14,861 - RawDataCleaner - ERROR - CRITIAL ERROR: No valid stocks survived cleaning. Check raw JSON keys.
+2026-04-16 14:22:14,869 - RawDataCleaner - INFO - Cleaning complete. Valid: 0, Dropped: 10
+2026-04-16 14:22:14,893 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:22:14,894 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:22:14,937 - RedditSentinel - INFO - Scanning Reddit JSON for []...
+2026-04-16 14:22:16,339 - RedditSentinel - ERROR - Reddit Scrape Failed: 'title'
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\ingestion\reddit_sentinel.py", line 34, in get_reddit_data
+    title = post["title"]
+            ~~~~^^^^^^^^^
+KeyError: 'title'
+2026-04-16 14:22:16,341 - MarketDataAggregator - WARNING - No Reddit data collected this cycle.
+2026-04-16 14:22:16,342 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:25:55,242 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:25:55,243 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:25:55,944 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:25:58,702 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:26:02,122 - YahooScraper - INFO - Captured: NVDA - 198.14
+2026-04-16 14:26:02,122 - YahooScraper - INFO - Captured: INTC - 68.28
+2026-04-16 14:26:02,122 - YahooScraper - INFO - Captured: QBTS - 21.80
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: IONQ - 44.79
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: HIMS - 27.23
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: SNAP - 6.09
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: SOFI - 19.12
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: SMR - 11.44
+2026-04-16 14:26:02,123 - YahooScraper - INFO - Captured: GRAB - 4.02
+2026-04-16 14:26:02,124 - YahooScraper - INFO - Captured: TSLA - 387.67
+2026-04-16 14:26:02,295 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:26:02,296 - RawDataCleaner - ERROR - Dropping record NVDA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...ion', 'price': '198.14'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'NVDA', 'name'...ion', 'price': '198.14'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,297 - RawDataCleaner - ERROR - Dropping record INTC: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...tion', 'price': '68.28'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'INTC', 'name'...tion', 'price': '68.28'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,298 - RawDataCleaner - ERROR - Dropping record QBTS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...Inc.', 'price': '21.80'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'QBTS', 'name'...Inc.', 'price': '21.80'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,298 - RawDataCleaner - ERROR - Dropping record IONQ: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...Inc.', 'price': '44.79'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'IONQ', 'name'...Inc.', 'price': '44.79'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,299 - RawDataCleaner - ERROR - Dropping record HIMS: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...Inc.', 'price': '27.23'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'HIMS', 'name'...Inc.', 'price': '27.23'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,299 - RawDataCleaner - ERROR - Dropping record SNAP: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'... Inc.', 'price': '6.09'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SNAP', 'name'... Inc.', 'price': '6.09'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,300 - RawDataCleaner - ERROR - Dropping record SOFI: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...Inc.', 'price': '19.12'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SOFI', 'name'...Inc.', 'price': '19.12'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,300 - RawDataCleaner - ERROR - Dropping record SMR: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...tion', 'price': '11.44'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'SMR', 'name':...tion', 'price': '11.44'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,301 - RawDataCleaner - ERROR - Dropping record GRAB: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...mited', 'price': '4.02'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'GRAB', 'name'...mited', 'price': '4.02'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,301 - RawDataCleaner - ERROR - Dropping record TSLA: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...nc.', 'price': '387.67'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\cleaner.py", line 20, in clean_raw_data
+    stock = StockSchema(**entry)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pydantic\main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StockSchema
+sentiment_score
+  Field required [type=missing, input_value={'symbol': 'TSLA', 'name'...nc.', 'price': '387.67'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+2026-04-16 14:26:02,302 - RawDataCleaner - ERROR - CRITIAL ERROR: No valid stocks survived cleaning. Check raw JSON keys.
+2026-04-16 14:26:02,307 - RawDataCleaner - INFO - Cleaning complete. Valid: 0, Dropped: 10
+2026-04-16 14:26:02,361 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:26:02,370 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:26:02,439 - RedditSentinel - INFO - Scanning Reddit JSON for []...
+2026-04-16 14:26:03,818 - MarketDataAggregator - WARNING - No Reddit data collected this cycle.
+2026-04-16 14:26:03,818 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:27:44,214 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:27:44,215 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:27:45,156 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:27:47,667 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: NVDA - 198.20
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: INTC - 68.15
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: QBTS - 21.81
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: IONQ - 44.74
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: HIMS - 27.41
+2026-04-16 14:27:52,619 - YahooScraper - INFO - Captured: SNAP - 6.09
+2026-04-16 14:27:52,620 - YahooScraper - INFO - Captured: SOFI - 19.14
+2026-04-16 14:27:52,620 - YahooScraper - INFO - Captured: SMR - 11.42
+2026-04-16 14:27:52,620 - YahooScraper - INFO - Captured: GRAB - 4.03
+2026-04-16 14:27:52,620 - YahooScraper - INFO - Captured: TSLA - 387.39
+2026-04-16 14:27:52,801 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:27:52,813 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:27:52,829 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:27:52,829 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:27:52,875 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'IONQ', 'HIMS', 'SNAP', 'SOFI', 'SMR', 'GRAB', 'TSLA']...
+2026-04-16 14:27:54,303 - RedditSentinel - ERROR - Reddit Scrape Failed: 'compount'
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\ingestion\reddit_sentinel.py", line 42, in get_reddit_data
+    sentiment_score = sia.polarity_scores(title + " " + body)["compount"]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'compount'
+2026-04-16 14:27:54,305 - MarketDataAggregator - WARNING - No Reddit data collected this cycle.
+2026-04-16 14:27:54,306 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:28:20,244 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:28:20,244 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:28:20,917 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:28:23,527 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:28:26,329 - YahooScraper - INFO - Captured: NVDA - 198.23
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: INTC - 68.15
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: QBTS - 21.81
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: IONQ - 44.74
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: HIMS - 27.39
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: SNAP - 6.09
+2026-04-16 14:28:26,330 - YahooScraper - INFO - Captured: SOFI - 19.14
+2026-04-16 14:28:26,331 - YahooScraper - INFO - Captured: SMR - 11.39
+2026-04-16 14:28:26,331 - YahooScraper - INFO - Captured: GRAB - 4.02
+2026-04-16 14:28:26,331 - YahooScraper - INFO - Captured: TSLA - 387.70
+2026-04-16 14:28:26,473 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:28:26,479 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:28:26,496 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:28:26,496 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:28:26,536 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'IONQ', 'HIMS', 'SNAP', 'SOFI', 'SMR', 'GRAB', 'TSLA']...
+2026-04-16 14:28:27,919 - RedditSentinel - WARNING - Validation failed for NVDA: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=298, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,921 - RedditSentinel - WARNING - Validation failed for NVDA: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=18, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,928 - RedditSentinel - WARNING - Validation failed for IONQ: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=26, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,937 - RedditSentinel - WARNING - Validation failed for NVDA: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=6, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,941 - RedditSentinel - WARNING - Validation failed for NVDA: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=30, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,945 - RedditSentinel - WARNING - Validation failed for NVDA: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=0, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,948 - RedditSentinel - WARNING - Validation failed for IONQ: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=0, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,951 - RedditSentinel - WARNING - Validation failed for QBTS: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=38, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,954 - RedditSentinel - WARNING - Validation failed for IONQ: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=38, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,961 - RedditSentinel - WARNING - Validation failed for SOFI: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=0, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,972 - RedditSentinel - WARNING - Validation failed for INTC: 1 validation error for StockSchema
+name
+  Input should be a valid string [type=string_type, input_value=35, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-16 14:28:27,978 - MarketDataAggregator - WARNING - No Reddit data collected this cycle.
+2026-04-16 14:28:27,979 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:31:03,607 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:31:03,607 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:31:04,292 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:31:06,833 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:31:09,056 - YahooScraper - INFO - Captured: NVDA - 198.20
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: INTC - 68.17
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: QBTS - 21.82
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: IONQ - 44.74
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: HIMS - 27.35
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: SNAP - 6.07
+2026-04-16 14:31:09,057 - YahooScraper - INFO - Captured: SOFI - 19.12
+2026-04-16 14:31:09,058 - YahooScraper - INFO - Captured: GRAB - 4.02
+2026-04-16 14:31:09,058 - YahooScraper - INFO - Captured: SMR - 11.35
+2026-04-16 14:31:09,058 - YahooScraper - INFO - Captured: TSLA - 387.57
+2026-04-16 14:31:09,181 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:31:09,187 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:31:09,206 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:31:09,207 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:31:09,248 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'IONQ', 'HIMS', 'SNAP', 'SOFI', 'GRAB', 'SMR', 'TSLA']...
+2026-04-16 14:31:10,848 - MainPipeline - ERROR - CRITICAL FALIURE during aggregagtion: 'price_momentumn'
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'price_momentumn'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\main.py", line 47, in run_pipeline
+    aggregate_market_data()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\aggregator.py", line 65, in aggregate_market_data
+    df_final = calculate_cynic_metrics(df_gold)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\aggregator.py", line 82, in calculate_cynic_metrics
+    (df["price_momentumn"] < 0), 1, 0)
+     ~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'price_momentumn'
+2026-04-16 14:31:47,492 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:31:47,492 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:31:48,250 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:31:50,690 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:31:54,494 - YahooScraper - INFO - Captured: NVDA - 198.11
+2026-04-16 14:31:54,494 - YahooScraper - INFO - Captured: INTC - 68.12
+2026-04-16 14:31:54,494 - YahooScraper - INFO - Captured: QBTS - 21.84
+2026-04-16 14:31:54,494 - YahooScraper - INFO - Captured: IONQ - 44.82
+2026-04-16 14:31:54,494 - YahooScraper - INFO - Captured: HIMS - 27.44
+2026-04-16 14:31:54,495 - YahooScraper - INFO - Captured: SNAP - 6.07
+2026-04-16 14:31:54,495 - YahooScraper - INFO - Captured: SOFI - 19.12
+2026-04-16 14:31:54,495 - YahooScraper - INFO - Captured: SMR - 11.35
+2026-04-16 14:31:54,495 - YahooScraper - INFO - Captured: GRAB - 4.02
+2026-04-16 14:31:54,495 - YahooScraper - INFO - Captured: TSLA - 387.30
+2026-04-16 14:31:54,642 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:31:54,647 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:31:54,662 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:31:54,662 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:31:54,703 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'IONQ', 'HIMS', 'SNAP', 'SOFI', 'SMR', 'GRAB', 'TSLA']...
+2026-04-16 14:31:56,367 - MarketDataAggregator - INFO - History Updated: data/market_history.parquet
+2026-04-16 14:31:56,367 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:41:15,617 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:41:15,617 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:41:16,409 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:41:18,850 - MainPipeline - ERROR - CRITIAL FALIURE during Ingestion: Browser.close: Connection closed while reading from the driver
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\main.py", line 22, in run_pipeline
+    await run_probe(RAW_DATA_PATH)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\ingestion\yahoo_probe.py", line 58, in run_probe
+    await browser.close()
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\playwright\async_api\_generated.py", line 14322, in close
+    return mapping.from_maybe_impl(await self._impl_obj.close(reason=reason))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\playwright\_impl\_browser.py", line 241, in close
+    raise e
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\playwright\_impl\_browser.py", line 238, in close
+    await self._channel.send("close", None, {"reason": reason})
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Browser.close: Connection closed while reading from the driver
+2026-04-16 14:41:33,127 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:41:33,127 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:41:33,837 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:41:37,949 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:41:38,972 - YahooScraper - INFO - Captured: NVDA - 198.48
+2026-04-16 14:41:38,972 - YahooScraper - INFO - Captured: INTC - 68.21
+2026-04-16 14:41:38,972 - YahooScraper - INFO - Captured: QBTS - 21.81
+2026-04-16 14:41:38,972 - YahooScraper - INFO - Captured: IONQ - 44.84
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: HIMS - 27.25
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: SNAP - 6.05
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: SOFI - 19.15
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: GRAB - 4.03
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: SMR - 11.31
+2026-04-16 14:41:38,973 - YahooScraper - INFO - Captured: TSLA - 388.65
+2026-04-16 14:41:39,093 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:41:39,098 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:41:39,111 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:41:39,112 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:41:39,149 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'IONQ', 'HIMS', 'SNAP', 'SOFI', 'GRAB', 'SMR', 'TSLA']...
+2026-04-16 14:41:40,559 - MarketDataAggregator - INFO - History Updated: data/market_history.parquet
+2026-04-16 14:41:40,559 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 14:48:33,518 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 14:48:33,518 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 14:48:34,227 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 14:48:35,913 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 14:48:39,415 - YahooScraper - INFO - Captured: NVDA - 198.29
+2026-04-16 14:48:39,415 - YahooScraper - INFO - Captured: INTC - 68.26
+2026-04-16 14:48:39,415 - YahooScraper - INFO - Captured: QBTS - 21.75
+2026-04-16 14:48:39,415 - YahooScraper - INFO - Captured: HIMS - 27.35
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: IONQ - 44.81
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: SNAP - 6.07
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: SOFI - 19.17
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: GRAB - 4.03
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: SMR - 11.38
+2026-04-16 14:48:39,416 - YahooScraper - INFO - Captured: TSLA - 389.49
+2026-04-16 14:48:39,562 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 14:48:39,567 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 14:48:39,591 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 14:48:39,591 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 14:48:39,633 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'HIMS', 'IONQ', 'SNAP', 'SOFI', 'GRAB', 'SMR', 'TSLA']...
+2026-04-16 14:48:41,174 - MarketDataAggregator - INFO - History Updated: data/market_history.parquet
+2026-04-16 14:48:41,175 - MainPipeline - INFO - --- Pipeline Completed Successfully ---
+2026-04-16 15:04:43,325 - MainPipeline - INFO - --- Starting Market Cynic Pipeline ---
+2026-04-16 15:04:43,325 - MainPipeline - INFO - [1/3] Ingesting data from Yahoo Finance...
+2026-04-16 15:04:44,097 - YahooScraper - INFO - Attempting to reach: https://finance.yahoo.com/markets/stocks/most-active/
+2026-04-16 15:04:48,963 - YahooScraper - INFO - Waiting for data table to load...
+2026-04-16 15:04:55,369 - YahooScraper - INFO - Captured: NVDA - 198.33
+2026-04-16 15:04:55,369 - YahooScraper - INFO - Captured: INTC - 68.48
+2026-04-16 15:04:55,370 - YahooScraper - INFO - Captured: QBTS - 21.53
+2026-04-16 15:04:55,370 - YahooScraper - INFO - Captured: SNAP - 6.03
+2026-04-16 15:04:55,370 - YahooScraper - INFO - Captured: HIMS - 26.92
+2026-04-16 15:04:55,370 - YahooScraper - INFO - Captured: IONQ - 44.67
+2026-04-16 15:04:55,370 - YahooScraper - INFO - Captured: SOFI - 19.03
+2026-04-16 15:04:55,371 - YahooScraper - INFO - Captured: GRAB - 4.01
+2026-04-16 15:04:55,371 - YahooScraper - INFO - Captured: SMR - 11.43
+2026-04-16 15:04:55,371 - YahooScraper - INFO - Captured: AMD - 278.15
+2026-04-16 15:04:55,669 - MainPipeline - INFO - [2/3] Cleaning and validating data...
+2026-04-16 15:04:55,675 - RawDataCleaner - INFO - Cleaning complete. Valid: 10, Dropped: 0
+2026-04-16 15:04:55,703 - MainPipeline - INFO - [3/3] Aggregating data with sentiment...
+2026-04-16 15:04:55,703 - MarketDataAggregator - INFO - Starting Gold Layer Aggregation...
+2026-04-16 15:04:55,747 - RedditSentinel - INFO - Scanning Reddit JSON for ['NVDA', 'INTC', 'QBTS', 'SNAP', 'HIMS', 'IONQ', 'SOFI', 'GRAB', 'SMR', 'AMD']...
+2026-04-16 15:04:57,365 - MainPipeline - ERROR - CRITICAL FALIURE during aggregagtion: 'total_weighted_sentiment'
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3641, in get_loc
+    return self._engine.get_loc(casted_key)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 168, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 197, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7668, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7676, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'total_weighted_sentiment'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\bibba\Code\market-cynic-pipeline\main.py", line 47, in run_pipeline
+    aggregate_market_data()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\src\transformation\aggregator.py", line 65, in aggregate_market_data
+    df_gold["sentiment"] = df_gold["total_weighted_sentiment"] / df_gold["total_weight"]
+                           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\frame.py", line 4378, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\bibba\Code\market-cynic-pipeline\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
+    raise KeyError(key) from err
+KeyError: 'total_weighted_sentiment'

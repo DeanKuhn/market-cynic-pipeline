@@ -1,4 +1,5 @@
 import asyncio
+import json
 from playwright.async_api import async_playwright # type:ignore
 
 from src.utils.logger import setup_logger
@@ -6,7 +7,6 @@ logger = setup_logger("YahooScraper")
 
 async def run_probe(output_file: str):
     async with async_playwright() as p:
-        # launch the browser in 'headless' mode
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win 64; x64) " \
@@ -17,6 +17,7 @@ async def run_probe(output_file: str):
         page = await context.new_page()
         url = "https://finance.yahoo.com/markets/stocks/most-active/"
         logger.info(f"Attempting to reach: {url}")
+
         try:
             # navigate and wait for the network to be 'idle' (JS fully loaded)
             await page.goto(url, wait_until="domcontentloaded", timeout=60000)
@@ -26,7 +27,6 @@ async def run_probe(output_file: str):
             await page.wait_for_selector("table", timeout=15000)
 
             rows = await page.query_selector_all("tbody tr")
-
             stock_data = []
 
             for row in rows[:10]:
@@ -42,11 +42,9 @@ async def run_probe(output_file: str):
                         "price": price.strip()
                     })
 
-            # log results
             for stock in stock_data:
                 logger.info(f"Captured: {stock['symbol']} - {stock['price']}")
 
-            import json
             with open(output_file, "w") as f:
                 json.dump(stock_data, f, indent=4)
 
