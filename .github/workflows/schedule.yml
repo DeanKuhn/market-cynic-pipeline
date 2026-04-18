@@ -2,7 +2,9 @@ name: Market Cynic Daily Run
 
 on:
   schedule:
-    - cron: '0 9,21 * * *'
+    - cron: '0 9 * * *'
+    - cron: '0 15 * * *'
+    - cron: '30 21 * * *'
   workflow_dispatch:
 
 jobs:
@@ -19,7 +21,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.12'
+        python-version: '3.13'
+        cache: 'pip'
 
     - name: Install dependencies
       run: |
@@ -45,4 +48,5 @@ jobs:
         # Only add the data file. Logs are handled by the Artifact step above.
         git add data/market_history.parquet
         git commit -m "Automated data update: $(date)" || echo "No changes to commit"
+        git pull --rebase
         git push

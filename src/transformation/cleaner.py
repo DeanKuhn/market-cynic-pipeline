@@ -20,14 +20,14 @@ def clean_raw_data(input_file: str, output_file: str):
             stock = StockSchema(**entry)
             valid_stocks.append(stock.model_dump())
         except ValidationError as e:
-            logger.error(f"Dropping record {entry.get("symbol")}: {e}"
+            logger.error(f"Dropping record {entry.get('symbol')}: {e}"
                          , exc_info=True)
             errors += 1
 
     if not valid_stocks:
-        logger.error("CRITIAL ERROR: No valid stocks survived cleaning. "
+        logger.error("CRITICAL ERROR: No valid stocks survived cleaning. "
                      "Check raw JSON keys.")
-        df = pd.DataFrame(columns=["symbol", "price", "name"])
+        df = pd.DataFrame(columns=list(StockSchema.model_fields.keys()))
     else:
         df = pd.DataFrame(valid_stocks)
 
@@ -36,4 +36,4 @@ def clean_raw_data(input_file: str, output_file: str):
     return df
 
 if __name__ == "__main__":
-    clean_raw_data()
+    clean_raw_data("data/raw_stocks.json", "data/cleansed_stocks.parquet")

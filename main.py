@@ -20,14 +20,12 @@ async def run_pipeline():
     logger.info("[1/3] Ingesting data from Yahoo Finance...")
     try:
         await run_probe(RAW_DATA_PATH)
-        # Gatekeeper check in case probe returned no data
         if not is_file_valid(RAW_DATA_PATH):
-            logger.error("CRITICAL FALIURE: Ingestion returned no data. Terminating.",
-                         exc_info=True)
+            logger.error("CRITICAL FAILURE: Ingestion returned no data. Terminating.")
             sys.exit(1)
 
     except Exception as e:
-        logger.error(f"CRITIAL FALIURE during Ingestion: {e}", exc_info=True)
+        logger.error(f"CRITICAL FAILURE during Ingestion: {e}", exc_info=True)
         sys.exit(1)
 
     # Task 2: Transformation (Silver)
@@ -45,8 +43,11 @@ async def run_pipeline():
     logger.info("[3/3] Aggregating data with sentiment...")
     try:
         aggregate_market_data()
+        if not os.path.exists("data/market_history.parquet"):
+            logger.error("CRITICAL FAILURE: Gold layer was not written. Terminating.")
+            sys.exit(1)
     except Exception as e:
-        logger.error(f"CRITICAL FALIURE during aggregagtion: {e}", exc_info=True)
+        logger.error(f"CRITICAL FAILURE during aggregation: {e}", exc_info=True)
         sys.exit(1)
 
     logger.info("--- Pipeline Completed Successfully ---")
