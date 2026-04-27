@@ -1,10 +1,11 @@
 name: Market Cynic Daily Run
 
 on:
-  schedule:
-    - cron: '0 9 * * *'
-    - cron: '0 15 * * *'
-    - cron: '30 21 * * *'
+  # Uncomment schedule block once Reddit API OAuth is approved and implemented
+  # schedule:
+  #   - cron: '0 9 * * *'    # 9:00 AM UTC / 5:00 AM ET  — pre-market
+  #   - cron: '0 15 * * *'   # 3:00 PM UTC / 11:00 AM ET — mid-session
+  #   - cron: '30 21 * * *'  # 9:30 PM UTC / 5:30 PM ET  — post-close
   workflow_dispatch:
 
 jobs:
