@@ -1,0 +1,72 @@
+[
+    {
+        "symbol": "NVDA",
+        "name": "NVIDIA Corporation",
+        "price": "225.32",
+        "volume": "177.214M",
+        "pct_change": "-4.42%"
+    },
+    {
+        "symbol": "ONDS",
+        "name": "Ondas Inc.",
+        "price": "10.62",
+        "volume": "139.349M",
+        "pct_change": "-5.26%"
+    },
+    {
+        "symbol": "NU",
+        "name": "Nu Holdings Ltd.",
+        "price": "12.19",
+        "volume": "138.4M",
+        "pct_change": "-5.72%"
+    },
+    {
+        "symbol": "INTC",
+        "name": "Intel Corporation",
+        "price": "108.77",
+        "volume": "132.532M",
+        "pct_change": "-6.18%"
+    },
+    {
+        "symbol": "NOK",
+        "name": "Nokia Oyj",
+        "price": "13.95",
+        "volume": "108.459M",
+        "pct_change": "-3.53%"
+    },
+    {
+        "symbol": "F",
+        "name": "Ford Motor Company",
+        "price": "13.40",
+        "volume": "107.515M",
+        "pct_change": "-7.46%"
+    },
+    {
+        "symbol": "POET",
+        "name": "POET Technologies Inc.",
+        "price": "15.97",
+        "volume": "99.488M",
+        "pct_change": "-22.36%"
+    },
+    {
+        "symbol": "PLUG",
+        "name": "Plug Power Inc.",
+        "price": "3.78",
+        "volume": "97.079M",
+        "pct_change": "-0.26%"
+    },
+    {
+        "symbol": "FIG",
+        "name": "Figma, Inc.",
+        "price": "22.92",
+        "volume": "77.085M",
+        "pct_change": "+13.24%"
+    },
+    {
+        "symbol": "AAPL",
+        "name": "Apple Inc.",
+        "price": "300.23",
+        "volume": "54.67M",
+        "pct_change": "+0.68%"
+    }
+]

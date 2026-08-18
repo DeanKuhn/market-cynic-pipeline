@@ -13,14 +13,6 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# --- Data & Persistence Strategy ---
-data/*
-!.gitkeep
-!data/market_history.parquet
-data/*.json
-data/*.csv
-data/*.sqlite
-
 # --- IDE & OS Garbage ---
 .vscode/
 .idea/
